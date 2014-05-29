@@ -3,5 +3,7 @@
 
     <string name="app_name">Polaris</string>
     <string name="hello_world">Hello world!</string>
+    <string name="create_account_text">Registrate</string>
+    <string name="login_text">Inicia Sesion</string>
 
 </resources>
