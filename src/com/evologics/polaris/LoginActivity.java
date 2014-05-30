@@ -1,5 +1,8 @@
 package com.evologics.polaris;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -8,12 +11,14 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
@@ -232,10 +237,14 @@ public class LoginActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(Void... params) {
 			// TODO: attempt authentication against a network service.
+			
+			//Generate JSON String
+			String JSONString = generateJSON(mEmail, mPassword);
 
 			try {
 				// Simulate network access.
 				Thread.sleep(2000);
+				
 			} catch (InterruptedException e) {
 				return false;
 			}
@@ -250,6 +259,22 @@ public class LoginActivity extends Activity {
 
 			// TODO: register the new account here.
 			return true;
+		}
+		
+		private String generateJSON(String email, String password){
+			JSONObject user_login = new JSONObject();
+			JSONObject credentials = new JSONObject();
+			try {
+				
+				credentials.put("password", password);
+				credentials.put("email", email);
+				user_login.put("user_login", credentials);
+				Log.d("JSON String is: ", user_login.toString());
+				return user_login.toString();
+			} catch (JSONException e){
+				e.printStackTrace();
+			}
+			return null;
 		}
 
 		@Override
