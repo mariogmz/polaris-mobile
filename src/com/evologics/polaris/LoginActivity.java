@@ -1,5 +1,17 @@
 package com.evologics.polaris;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -242,11 +254,28 @@ public class LoginActivity extends Activity {
 			String JSONString = generateJSON(mEmail, mPassword);
 
 			try {
-				// Simulate network access.
-				Thread.sleep(2000);
+				int TIMEOUT_MILLISEC = 10000;  // = 10 seconds
+				HttpParams httpParams = new BasicHttpParams();
+				HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT_MILLISEC);
+				HttpConnectionParams.setSoTimeout(httpParams, TIMEOUT_MILLISEC);
+				HttpClient client = new DefaultHttpClient(httpParams);
+
+				HttpPost request = new HttpPost("https://polaris-app.herokuapp.com/api/login");
+				request.setEntity(new ByteArrayEntity(
+				    JSONString.getBytes("UTF8")));
+				HttpResponse response = client.execute(request);
+				Log.d("response ->", response.toString());
+				//Toast.makeText(null, response.toString(), Toast.LENGTH_LONG).show();
 				
-			} catch (InterruptedException e) {
-				return false;
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 			for (String credential : DUMMY_CREDENTIALS) {
