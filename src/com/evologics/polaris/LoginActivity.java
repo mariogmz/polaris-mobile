@@ -263,7 +263,7 @@ public class LoginActivity extends Activity {
 			
 			//Generate JSON String
 			JSONObject JSONObj = generateJSON(mEmail, mPassword);
-
+			String responseBody = "";
 			try {
 				int TIMEOUT_MILLISEC = 10000;  // = 10 seconds
 				HttpParams httpParams = new BasicHttpParams();
@@ -283,6 +283,7 @@ public class LoginActivity extends Activity {
 				String body = this.getResponseBody(response);
 				
 				Log.d("response ->", body);
+				responseBody = body;
 				//Toast.makeText(null, response.toString(), Toast.LENGTH_LONG).show();
 				
 			} catch (UnsupportedEncodingException e) {
@@ -295,7 +296,29 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			if (!responseBody.isEmpty()){
+				try {
+					JSONObject response = new JSONObject(responseBody);
+					boolean success = (boolean) response.getBoolean("success");
+					if(success){
+						runOnUiThread(new Runnable(){
+							public void run(){
+								Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_LONG).show();
+							}
+						});
+					}else{
+						runOnUiThread(new Runnable(){
+							public void run(){
+								Toast.makeText(getApplicationContext(), "Not a Successful Login", Toast.LENGTH_LONG).show();
+							}
+						});
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					Log.d("exception", e.getMessage());
+				}
+				
+			}
 			for (String credential : DUMMY_CREDENTIALS) {
 				String[] pieces = credential.split(":");
 				if (pieces[0].equals(mEmail)) {
