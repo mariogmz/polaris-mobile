@@ -3,7 +3,7 @@
     <string name="title_activity_login">Inicia Sesión</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Correo Electronico</string>
+    <string name="prompt_email">Correo electronico</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in_register"><b>Iniciar Sesion</b></string>
     <string name="action_sign_in_short">Iniciar</string>

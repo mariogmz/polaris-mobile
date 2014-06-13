@@ -15,8 +15,8 @@ public class MainActivity extends Activity {
     }
     
     public void doCreateAccount(View view){
-    	//TODO: Create account implementation
-    	Toast.makeText(getApplicationContext(), "Create function called", Toast.LENGTH_LONG).show();
+    	Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+    	startActivity(intent);
     }
     
     public void doLogin(View view){

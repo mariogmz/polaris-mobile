@@ -58,6 +58,41 @@ public class PolarisUtil {
 		return null;
 	}
 	
+/* Registration helper methods -- start */
+	
+	public static JSONObject generateRegistrationJSON(String email, String password) {
+		JSONObject user_login = new JSONObject();
+		JSONObject credentials = new JSONObject();
+		try {
+
+			credentials.put("password", password);
+			credentials.put("email", email);
+			user_login.put("user", credentials);
+			Log.d("Login JSON -> ", user_login.toString());
+			return user_login;
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param response is the response JSON, containing the attributes needed for validation
+	 * @param element is the attribute that is going to be searched in the response JSON
+	 * @return true, if the element is in the response JSON
+	 */
+	public static boolean processResponse(JSONObject response, String element ){
+		try {
+			return response.getString(element) != null;
+		} catch (JSONException e) {
+			Log.d("Error getting element -> ", element);
+			return false;
+		}
+	}
+	
+/* Registration helper methods -- end */
+	
 	// TODO: Replace enum with real HTTP one.
 	public enum RequestMethod {
 		GET, POST, PUT, DELETE, PATCH;
