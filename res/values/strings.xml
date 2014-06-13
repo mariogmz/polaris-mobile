@@ -2,9 +2,10 @@
 <resources>
 
     <string name="app_name">Polaris</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">In app screen, after the login/registration process is successful!</string>
     <string name="create_account_text">Registrate</string>
     <string name="login_text">Inicia Sesion</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_polaris">PolarisActivity</string>
 
 </resources>

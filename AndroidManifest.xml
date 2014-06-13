@@ -33,12 +33,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.evologics.polaris.MainActivity" />
         </activity>
-        <activity android:name="com.evologics.polaris.RegisterActivity"
+        <activity
+            android:name="com.evologics.polaris.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:windowSoftInputMode="adjustResize|stateVisible"
-            android:parentActivityName="com.evologics.polaris.MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:parentActivityName="com.evologics.polaris.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.evologics.polaris.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.evologics.polaris.PolarisActivity"
+            android:label="@string/title_activity_polaris" >
         </activity>
     </application>
 

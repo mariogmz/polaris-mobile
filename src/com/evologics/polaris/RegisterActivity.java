@@ -11,6 +11,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,12 @@ import android.widget.Toast;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
+/**
+ * Activity which displays a registration screen to the user.
+ * @author Polaris Dev Team
+ * @version 1.0
+ * @since 06/12/2014
+ */
 public class RegisterActivity extends Activity {
 	// The default email to populate the email field with.
 		public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
@@ -263,7 +270,9 @@ public class RegisterActivity extends Activity {
 							if( !authTokenResponse.isEmpty() ){
 								runOnUiThread(new Runnable(){
 									public void run(){
-										Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
+										//Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_LONG).show();
+										Intent intent = new Intent(getApplicationContext(), PolarisActivity.class);
+								    	startActivity(intent);
 									}
 								});
 							}

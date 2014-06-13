@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ import com.evologics.polaris.util.PolarisUtil;
 import com.evologics.polaris.util.PolarisUtil.RequestMethod;
 
 /**
- * Activity which displays a login screen to the user, offering registration as well.
+ * Activity which displays a login screen to the user.
  * @author Polaris Dev Team
  * @version 1.0
  * @since 06/04/2014
@@ -239,7 +240,9 @@ public class LoginActivity extends Activity {
 					if(success){
 						runOnUiThread(new Runnable(){
 							public void run(){
-								Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_LONG).show();
+								//Toast.makeText(getApplicationContext(), "Successful Login", Toast.LENGTH_LONG).show();
+								Intent intent = new Intent(getApplicationContext(), PolarisActivity.class);
+						    	startActivity(intent);
 							}
 						});
 					}else{
