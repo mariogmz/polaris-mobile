@@ -4,6 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.evologics.polaris.LoginActivity.UserLoginTask;
+import com.evologics.polaris.controller.UserStore;
+import com.evologics.polaris.controller.UserStoreImpl;
 import com.evologics.polaris.util.PolarisUtil;
 import com.evologics.polaris.util.PolarisUtil.RequestMethod;
 
@@ -59,6 +61,14 @@ public class RegisterActivity extends Activity {
 
 			setContentView(R.layout.activity_register);
 			setupActionBar();
+			
+			UserStore us = UserStoreImpl.getInstance();
+	        
+	        if( us.getUserAuthToken() != null ){
+	        	Intent intent = new Intent(getApplicationContext(), PolarisActivity.class);
+	        	startActivity(intent);
+	        	finish();
+	        } 
 
 			// Set up the login form.
 			mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -267,6 +277,11 @@ public class RegisterActivity extends Activity {
 						
 						if( PolarisUtil.processResponse(response, "authentication_token") ){
 							String authTokenResponse = response.getString("authentication_token");
+							
+							UserStore us = UserStoreImpl.getInstance();
+							us.setUserEmail(mEmail);
+							us.setUserAuthToken( authTokenResponse);
+							
 							if( !authTokenResponse.isEmpty() ){
 								runOnUiThread(new Runnable(){
 									public void run(){

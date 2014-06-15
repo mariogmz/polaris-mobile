@@ -23,6 +23,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.evologics.polaris.controller.UserStore;
+import com.evologics.polaris.controller.UserStoreImpl;
 import com.evologics.polaris.util.PolarisUtil;
 import com.evologics.polaris.util.PolarisUtil.RequestMethod;
 
@@ -56,6 +58,14 @@ public class LoginActivity extends Activity {
 
 		setContentView(R.layout.activity_login);
 		setupActionBar();
+		
+		UserStore us = UserStoreImpl.getInstance();
+        
+        if( us.getUserAuthToken() != null ){
+        	Intent intent = new Intent(getApplicationContext(), PolarisActivity.class);
+        	startActivity(intent);
+        	finish();
+        } 
 
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -237,6 +247,11 @@ public class LoginActivity extends Activity {
 				try {
 					JSONObject response = new JSONObject(responseBody);
 					boolean success = (boolean) response.getBoolean("success");
+					
+					UserStore us = UserStoreImpl.getInstance();
+					us.setUserEmail(mEmail);
+					us.setUserAuthToken( response.getString("auth_token"));
+					
 					if(success){
 						runOnUiThread(new Runnable(){
 							public void run(){
