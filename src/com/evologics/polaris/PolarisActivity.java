@@ -24,13 +24,16 @@ public class PolarisActivity extends Activity {
 	}
 	
 	public void logout(View view){
-		UserStoreImpl.getInstance().setUserAuthToken(null);
-		UserStoreImpl.getInstance().setUserEmail(null);
-		
 		// TODO: Call logout activity to display the process.
-		
-		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		//finish();
+		Intent intent = new Intent(getApplicationContext(), LogoutActivity.class);
     	startActivity(intent);
     	finish();
+    	
+    	
+		
+		//intent = new Intent(getApplicationContext(), MainActivity.class);
+    	//startActivity(intent);
+    	//finish();
 	}
 }

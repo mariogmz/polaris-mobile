@@ -13,6 +13,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -49,6 +50,20 @@ public class PolarisUtil {
 			credentials.put("email", email);
 			user_login.put("user_login", credentials);
 			Log.d("Login JSON -> ", user_login.toString());
+			return user_login;
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static JSONObject generateLogoutJSON(String email) {
+		JSONObject user_login = new JSONObject();
+		JSONObject credentials = new JSONObject();
+		try {
+			credentials.put("email", email);
+			user_login.put("user_login", credentials);
+			Log.d("Logout JSON -> ", user_login.toString());
 			return user_login;
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -128,13 +143,15 @@ public class PolarisUtil {
 					e.printStackTrace();
 				}
 				
-				
-				
+				break;
 				//End case POST
+			case DELETE:
+				
+				
 			//TODO: Implementation for a all the other request methods
 			case GET:
 			case PUT:
-			case DELETE:
+			
 			case PATCH:
 				break;
 		}

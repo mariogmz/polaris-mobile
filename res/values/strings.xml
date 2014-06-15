@@ -7,8 +7,8 @@
     <string name="login_text">Inicia Sesion</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_polaris">PolarisActivity</string>
-    
-    <!--  Login Activity Strings -->
+
+    <!-- Login Activity Strings -->
     <string name="title_activity_login">Inicia Sesión</string>
 
     <!-- Strings related to login -->
@@ -22,8 +22,8 @@
     <string name="error_invalid_password">La contraseña es invalida</string>
     <string name="error_incorrect_password">La contraseña es incorrecta</string>
     <string name="error_field_required">Este campo es requerido</string>
-    
-    <!--  Resiter Activity Strings -->
+
+    <!-- Resiter Activity Strings -->
     <string name="title_activity_register">Nuevo Registro</string>
 
     <!-- Strings related to login -->
@@ -32,5 +32,8 @@
     <string name="r_action_sign_in_short">Registrate</string>
     <string name="r_login_progress_signing_in">Registrando&#8230;</string>
     <string name="r_error_passwords_dont_match">Contraseñas no coinciden</string>
+    <string name="title_activity_logout">LogoutActivity</string>
+    
+    <string name="login_progress_signing_out">Cerrando Sesion&#8230;</string>
 
 </resources>
