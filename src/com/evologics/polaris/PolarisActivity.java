@@ -1,12 +1,12 @@
 package com.evologics.polaris;
 
-import com.evologics.polaris.controller.UserStoreImpl;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+
+import com.evologics.polaris.controller.UserStoreImpl;
 
 public class PolarisActivity extends Activity {
 	
@@ -21,5 +21,16 @@ public class PolarisActivity extends Activity {
 		userStatus.setText( "User email: " + UserStoreImpl.getInstance().getUserEmail() 
 				+ ", User authToken: " + UserStoreImpl.getInstance().getUserAuthToken() );
 		
+	}
+	
+	public void logout(View view){
+		UserStoreImpl.getInstance().setUserAuthToken(null);
+		UserStoreImpl.getInstance().setUserEmail(null);
+		
+		// TODO: Call logout activity to display the process.
+		
+		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+    	startActivity(intent);
+    	finish();
 	}
 }

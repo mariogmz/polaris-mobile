@@ -3,12 +3,6 @@ package com.evologics.polaris;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.evologics.polaris.LoginActivity.UserLoginTask;
-import com.evologics.polaris.controller.UserStore;
-import com.evologics.polaris.controller.UserStoreImpl;
-import com.evologics.polaris.util.PolarisUtil;
-import com.evologics.polaris.util.PolarisUtil.RequestMethod;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -17,17 +11,22 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+
+import com.evologics.polaris.controller.UserStore;
+import com.evologics.polaris.controller.UserStoreImpl;
+import com.evologics.polaris.util.PolarisUtil;
+import com.evologics.polaris.util.PolarisUtil.RequestMethod;
 
 /**
  * Activity which displays a registration screen to the user.

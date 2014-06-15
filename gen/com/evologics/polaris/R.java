@@ -25,7 +25,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f08000b;
+        public static final int action_forgot_password=0x7f08000c;
         public static final int btn_create_account=0x7f080007;
         public static final int btn_login=0x7f080008;
         public static final int email=0x7f080003;
@@ -33,10 +33,11 @@ public final class R {
         public static final int login_form=0x7f080002;
         public static final int login_status=0x7f080000;
         public static final int login_status_message=0x7f080001;
+        public static final int logout=0x7f080009;
         public static final int password=0x7f080004;
-        public static final int password_re=0x7f08000a;
+        public static final int password_re=0x7f08000b;
         public static final int sign_in_button=0x7f080006;
-        public static final int user_status=0x7f080009;
+        public static final int user_status=0x7f08000a;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
@@ -66,22 +67,19 @@ public final class R {
          */
         public static final int prompt_email=0x7f050007;
         public static final int prompt_password=0x7f050008;
-        public static final int r_action_forgot_password=0x7f050017;
-        public static final int r_action_sign_in_register=0x7f050015;
-        public static final int r_action_sign_in_short=0x7f050016;
-        public static final int r_error_field_required=0x7f05001c;
-        public static final int r_error_incorrect_password=0x7f05001b;
-        public static final int r_error_invalid_email=0x7f050019;
-        public static final int r_error_invalid_password=0x7f05001a;
-        public static final int r_error_passwords_dont_match=0x7f05001d;
-        public static final int r_login_progress_signing_in=0x7f050018;
+        public static final int r_action_sign_in_register=0x7f050013;
+        public static final int r_action_sign_in_short=0x7f050014;
+        public static final int r_error_passwords_dont_match=0x7f050016;
+        public static final int r_login_progress_signing_in=0x7f050015;
         /**  Strings related to login 
          */
-        public static final int r_prompt_email=0x7f050012;
-        public static final int r_prompt_password=0x7f050014;
-        public static final int r_prompt_password_confirm=0x7f050013;
+        public static final int r_prompt_password_confirm=0x7f050012;
+        /**   Login Activity Strings 
+         */
         public static final int title_activity_login=0x7f050006;
         public static final int title_activity_polaris=0x7f050005;
+        /**   Resiter Activity Strings 
+         */
         public static final int title_activity_register=0x7f050011;
     }
     public static final class style {

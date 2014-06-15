@@ -1,13 +1,12 @@
 package com.evologics.polaris;
 
-import com.evologics.polaris.controller.UserStore;
-import com.evologics.polaris.controller.UserStoreImpl;
-import com.evologics.polaris.util.PolarisUtil;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.evologics.polaris.controller.UserStore;
+import com.evologics.polaris.controller.UserStoreImpl;
 
 public class MainActivity extends Activity {
 
