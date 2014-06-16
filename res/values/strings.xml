@@ -33,7 +33,7 @@
     <string name="r_login_progress_signing_in">Registrando&#8230;</string>
     <string name="r_error_passwords_dont_match">Contraseñas no coinciden</string>
     <string name="title_activity_logout">LogoutActivity</string>
-    
     <string name="login_progress_signing_out">Cerrando Sesion&#8230;</string>
+    <string name="title_activity_list">ListActivity</string>
 
 </resources>

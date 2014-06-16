@@ -50,6 +50,10 @@
             android:name="com.evologics.polaris.LogoutActivity"
             android:label="@string/title_activity_logout" >
         </activity>
+        <activity
+            android:name="com.evologics.polaris.ListActivity"
+            android:label="@string/title_activity_list" >
+        </activity>
     </application>
 
 </manifest>
