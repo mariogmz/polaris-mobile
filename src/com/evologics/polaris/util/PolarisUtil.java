@@ -36,6 +36,16 @@ import android.util.Log;
 
 public class PolarisUtil {
 	
+	/*
+	 * Global arrays and vars
+	 */
+	
+	public static enum ESTATUS_PRESTAMO{
+		EN_TIEMPO,
+		VENCIDO,
+		DEVUELTO
+	};
+	
 	/**
 	 * @param email User credential
 	 * @param password User credential

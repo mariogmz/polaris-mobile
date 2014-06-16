@@ -25,4 +25,12 @@
         android:text="@string/login_text"
         android:onClick="doLogin" />
 
+    <Button
+        android:id="@+id/button_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login"
+        android:layout_centerHorizontal="true"
+        android:text="Button" />
+
 </RelativeLayout>

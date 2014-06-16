@@ -7,5 +7,6 @@
     <string name="login_text">Inicia Sesion</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_polaris">PolarisActivity</string>
+    <string name="title_activity_lista_prestamos">ListaPrestamos</string>
 
 </resources>

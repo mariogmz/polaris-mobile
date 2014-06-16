@@ -1,0 +1,7 @@
+
+<resources>
+    <string name="title_activity_lista"></string>
+    
+    <!-- String related to components -->
+    <string name="button_nuevo_prestamo">Agregar nuevo préstamo</string>
+</resources>
