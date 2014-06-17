@@ -24,6 +24,9 @@ import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.evologics.polaris.controller.SessionStore;
+import com.evologics.polaris.controller.UserStoreImpl;
+
 import android.util.Log;
 
 /**
@@ -113,13 +116,6 @@ public class PolarisUtil {
 	
 	public static String serverRequest(JSONObject jsonObject, RequestMethod method, String url ){
 		
-		int TIMEOUT_MILLISEC = 10000;  // = 10 seconds
-		HttpParams httpParams = new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT_MILLISEC);
-		HttpConnectionParams.setSoTimeout(httpParams, TIMEOUT_MILLISEC);
-		HttpClient client = new DefaultHttpClient(httpParams);
-		
-		
 		switch( method ){
 			case POST:
 				HttpPost request = new HttpPost(url);
@@ -133,7 +129,7 @@ public class PolarisUtil {
 				request.setHeader("Content-type", "application/json");
 							
 				try {
-					HttpResponse response = client.execute(request);
+					HttpResponse response = SessionStore.getInstance().getClient().execute(request);
 					return getResponseBody(response);
 				} catch (ClientProtocolException e) {
 					// TODO Auto-generated catch block
@@ -146,6 +142,23 @@ public class PolarisUtil {
 				break;
 				//End case POST
 			case DELETE:
+				url += "?" + "user_login=" + UserStoreImpl.getInstance().getUserEmail();
+				HttpDelete deleteRequest = new HttpDelete(url);
+				
+				deleteRequest.setHeader("Content-type", "application/json");
+							
+				try {
+					HttpResponse response = SessionStore.getInstance().getClient().execute(deleteRequest);
+					return getResponseBody(response);
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				break;
 				
 				
 			//TODO: Implementation for a all the other request methods
