@@ -25,16 +25,6 @@ public class MainActivity extends Activity {
         	finish();
         }
         
-		Button button_test = (Button) findViewById(R.id.button_test);
-		button_test.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(getApplicationContext(),ListActivity.class);
-				startActivity(intent);
-			}
-		});
-        
     }
     
     public void doCreateAccount(View view){

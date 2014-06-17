@@ -22,6 +22,17 @@ public class PolarisActivity extends Activity {
 		userStatus = (TextView) findViewById(R.id.user_status);
 		userStatus.setText( "User email: " + UserStoreImpl.getInstance().getUserEmail() 
 				+ ", User authToken: " + UserStoreImpl.getInstance().getUserAuthToken() );
+		
+		Button buttonList = (Button) findViewById(R.id.button_goToList);
+		
+		buttonList.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),ListActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	public void logout(View view){

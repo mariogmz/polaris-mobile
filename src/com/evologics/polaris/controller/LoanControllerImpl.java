@@ -18,6 +18,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.evologics.polaris.ListActivity;
 import com.evologics.polaris.model.Loan;
@@ -37,8 +38,7 @@ public class LoanControllerImpl implements LoanController {
 	}
 	
 	public void populateLoanList(){
-		String JSON = LoanControllerImpl.GET(this.url);
-		
+		new HttpAsyncTask().execute(url);
 	}
 	
 	public static String GET(String url){
@@ -61,7 +61,7 @@ public class LoanControllerImpl implements LoanController {
 				result = "GET JSON Failed";
 			}
 		}catch(Exception ex){
-			Log.d("InputStream",ex.getLocalizedMessage());
+			Log.d("InputStream",ex.getMessage());
 		}
 		return result;
 	}
@@ -98,7 +98,7 @@ public class LoanControllerImpl implements LoanController {
 		// onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            //Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
+            Toast.makeText(Config.context.getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
             //etResponse.setText(result);
        }
 	}
