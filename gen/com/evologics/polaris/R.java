@@ -25,33 +25,48 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f08000f;
+        public static final int TextView01=0x7f080013;
+        public static final int TextView02=0x7f080015;
+        public static final int TextView03=0x7f080017;
+        public static final int TextView04=0x7f080018;
+        public static final int action_forgot_password=0x7f08001a;
+        public static final int action_settings=0x7f08001b;
         public static final int btn_create_account=0x7f080008;
         public static final int btn_login=0x7f080009;
-        public static final int button_newLoan=0x7f08000d;
+        public static final int button1=0x7f080019;
+        public static final int button_newLoan=0x7f08000e;
+        public static final int container=0x7f08000a;
+        public static final int editText1=0x7f080010;
+        public static final int editText2=0x7f080016;
         public static final int email=0x7f080003;
-        public static final int listView1=0x7f08000c;
+        public static final int imageButton1=0x7f080011;
+        public static final int listView1=0x7f08000d;
         public static final int login=0x7f080005;
         public static final int login_form=0x7f080002;
         public static final int login_status=0x7f080000;
         public static final int login_status_message=0x7f080001;
-        public static final int logout=0x7f08000a;
+        public static final int logout=0x7f08000b;
         public static final int logout_status=0x7f080007;
         public static final int password=0x7f080004;
-        public static final int password_re=0x7f08000e;
+        public static final int password_re=0x7f08000f;
         public static final int sign_in_button=0x7f080006;
-        public static final int user_status=0x7f08000b;
+        public static final int spinner1=0x7f080014;
+        public static final int textView1=0x7f080012;
+        public static final int user_status=0x7f08000c;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
         public static final int activity_logout=0x7f030001;
         public static final int activity_main=0x7f030002;
-        public static final int activity_polaris=0x7f030003;
-        public static final int activity_register=0x7f030004;
+        public static final int activity_newitem=0x7f030003;
+        public static final int activity_polaris=0x7f030004;
+        public static final int activity_register=0x7f030005;
+        public static final int fragment_newitem=0x7f030006;
     }
     public static final class menu {
         public static final int login=0x7f070000;
-        public static final int register=0x7f070001;
+        public static final int newitem=0x7f070001;
+        public static final int register=0x7f070002;
     }
     public static final class string {
         public static final int action_forgot_password=0x7f05000b;
