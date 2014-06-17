@@ -1,5 +1,7 @@
 package com.evologics.polaris;
 
+import com.evologics.polaris.controller.*;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.*;
@@ -11,6 +13,9 @@ public class ListActivity extends Activity {
 	//Object linked to out list
 	ListView listView;
 	
+	//LoanController
+	LoanController loanController = new LoanControllerImpl();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,6 +25,7 @@ public class ListActivity extends Activity {
 	}
 
 	private void populateList() {
+		loanController.populateLoanList();
 		//Get listView
 		listView = (ListView) findViewById(R.id.listView_Item);
 		
