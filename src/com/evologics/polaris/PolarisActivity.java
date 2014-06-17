@@ -25,9 +25,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.evologics.polaris.controller.Communicator;
 import com.evologics.polaris.controller.UserStoreImpl;
 import com.evologics.polaris.model.Loan;
+import com.evologics.polaris.util.Communicator;
 
 public class PolarisActivity extends Activity {
 

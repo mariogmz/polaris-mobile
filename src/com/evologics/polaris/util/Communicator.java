@@ -1,4 +1,4 @@
-package com.evologics.polaris.controller;
+package com.evologics.polaris.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
