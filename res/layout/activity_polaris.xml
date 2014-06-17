@@ -2,31 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="getJSON"
     tools:context="${packageName}.${activityClass}" >
 
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="Cerrar Sesión"
-        android:onClick="logout" />
+        android:onClick="logout"
+        android:text="Cerrar Sesión" />
 
     <TextView
         android:id="@+id/user_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/logout"
+        android:layout_alignParentTop="true"
         android:text="@string/hello_world" />
 
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logout"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/user_status" >
+
+    </ListView>
+
     <Button
-        android:id="@+id/button_goToList"
+        android:id="@+id/button_newLoan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="List" />
+        android:text="Nuevo" />
 
 </RelativeLayout>
