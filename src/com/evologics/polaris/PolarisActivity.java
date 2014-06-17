@@ -68,9 +68,9 @@ public class PolarisActivity extends Activity {
 						try {
 							try {
 								getJSON("https://polaris-app.herokuapp.com/api/reminders");
-								String responseText = getResponseText("https://polaris-app.herokuapp.com/api/reminders?auth_token="+UserStoreImpl.getInstance().getUserAuthToken().toString());
-								JSONObject mainResponseObject = new JSONObject(responseText);
-							} catch (IOException e) {
+								//String responseText = getResponseText("https://polaris-app.herokuapp.com/api/reminders?auth_token="+UserStoreImpl.getInstance().getUserAuthToken().toString());
+								//JSONObject mainResponseObject = new JSONObject(responseText);
+							} catch (Exception e) {
 								// TODO Auto-generated catch block
 								Log.e("ERROR", e.getMessage());
 							}
@@ -100,23 +100,6 @@ public class PolarisActivity extends Activity {
 		// finish();
 	}
 
-	private String getResponseText(String stringUrl) throws IOException {
-		StringBuilder response = new StringBuilder();
-
-		URL url = new URL(stringUrl);
-		HttpURLConnection httpconn = (HttpURLConnection) url.openConnection();
-		if (httpconn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-			BufferedReader input = new BufferedReader(new InputStreamReader(
-					httpconn.getInputStream()), 8192);
-			String strLine = null;
-			while ((strLine = input.readLine()) != null) {
-				response.append(strLine);
-			}
-			input.close();
-		}
-		return response.toString();
-	}
-
 	private void getJSON(String url) {
 		String page;
 		try {
@@ -125,32 +108,11 @@ public class PolarisActivity extends Activity {
 			JSONArray jsonArray = new JSONArray(page);
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject entry = (JSONObject) jsonArray.get(i);
-				loanList.add(parseJSONLoan(entry));
+				loanList.add(new Loan(entry));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-	/*
-	 * This function "maps" from JSON to java object in a hard-coding way
-	 */
-	@SuppressWarnings("finally")
-	private Loan parseJSONLoan(JSONObject entry) {
-		DateFormat formatter = new SimpleDateFormat("dd-MM-yy");
-		Loan loan = null;
-		try {
-			loan = new Loan(entry.getString("concepto"),entry.getString("contacto"),
-					formatter.parse(entry.getString("fecha_prestamo")),formatter.parse(entry.getString("fecha_entrega")),
-					entry.getString("detalle")," ",(entry.getBoolean("regresado") == true ? Loan.Loan_State.Refunded : Loan.Loan_State.On_Time));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			return loan;
 		}
 	}
 }

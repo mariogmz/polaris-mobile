@@ -11,6 +11,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
 
+import com.evologics.polaris.controller.SessionStore;
+
 import android.util.Log;
 
 public class Communicator {
@@ -18,7 +20,7 @@ public class Communicator {
 	public String executeHttpGet(String URL) throws Exception {
 		BufferedReader in = null;
 		try {
-			HttpClient client = new DefaultHttpClient();
+			HttpClient client = SessionStore.getInstance().getClient();
 			client.getParams().setParameter(CoreProtocolPNames.USER_AGENT,
 					"android");
 			HttpGet request = new HttpGet();

@@ -1,6 +1,13 @@
 package com.evologics.polaris.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
 
 public class Loan {
 
@@ -33,6 +40,43 @@ public class Loan {
 		this.note = note;
 		this.category = category;
 		this.currentState = currentState;
+	}
+	
+	/*
+	 * This special constructor parses a JSON object
+	 * to map this Java object
+	 */
+	
+	public Loan(JSONObject json){
+		//ObjectName
+		this.objectName = json.optString("concepto");
+		//LoanOwner
+		this.loanOwner = json.optString("contacto");
+		//Dates parsing
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			//Date Start
+			this.dateStart = sdf.parse(json.optString("fecha_prestamo"));
+			//Date End
+			this.dateEnd = sdf.parse(json.optString("fecha_entrega"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			Log.d("ERROR",e.getMessage());
+			e.printStackTrace();
+		}
+		//Detail
+		this.note = json.optString("detalle");
+		//Category
+		this.category = "";
+		
+		boolean regresado = json.isNull("regresado") ? false : true;
+		if(regresado){
+			this.currentState = Loan_State.Refunded;
+		}else{
+			this.currentState = new Date().after(dateEnd)? Loan_State.Expired : Loan_State.On_Time;
+		}
+		
+		
 	}
 
 	public String getObjectName() {
@@ -100,4 +144,6 @@ public class Loan {
 	public boolean isRefunded(){
 		return this.currentState == Loan_State.Refunded? true : false;
 	}
+	
+	
 }
