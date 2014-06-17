@@ -3,7 +3,7 @@ package com.evologics.polaris.model;
 import java.util.Date;
 
 public class Loan {
-	
+
 	private String objectName;
 	private String loanOwner;
 	private Date dateStart;
@@ -14,6 +14,26 @@ public class Loan {
 	public static enum Loan_State{On_Time,Expired,Refunded};
 	
 	private Loan_State currentState;
+	
+	/**
+	 * @param objectName
+	 * @param loanOwner
+	 * @param dateStart
+	 * @param dateEnd
+	 * @param note
+	 * @param category
+	 * @param currentState
+	 */
+	public Loan(String objectName, String loanOwner, Date dateStart,
+			Date dateEnd, String note, String category, Loan_State currentState) {
+		this.objectName = objectName;
+		this.loanOwner = loanOwner;
+		this.dateStart = dateStart;
+		this.dateEnd = dateEnd;
+		this.note = note;
+		this.category = category;
+		this.currentState = currentState;
+	}
 
 	public String getObjectName() {
 		return objectName;
