@@ -61,6 +61,10 @@
             android:name="com.evologics.polaris.NewLoanActivity"
             android:label="@string/title_activity_new_loan" >
         </activity>
+        <activity
+            android:name="com.evologics.polaris.UpdateActivity"
+            android:label="@string/title_activity_new_loan" >
+        </activity>
     </application>
 
 </manifest>

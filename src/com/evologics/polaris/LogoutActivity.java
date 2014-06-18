@@ -112,6 +112,20 @@ public class LogoutActivity extends Activity {
 				}
 				return true;
 			}
+			
+			@Override
+			protected void onPostExecute(final Boolean success) {
+				showProgress(false);
+
+				if (success) {
+					finish();
+				}
+			}
+
+			@Override
+			protected void onCancelled() {
+				showProgress(false);
+			}
 		}
 		
 }

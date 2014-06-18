@@ -27,7 +27,8 @@ public class PolarisActivity extends Activity {
 	private ListView loanView;
 	private ArrayList<Loan> loanList;
 	LoanAdapter adapter;
-
+	public static Loan loan;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,8 +80,9 @@ public class PolarisActivity extends Activity {
 	        	@Override
 	        	  public void onItemClick(AdapterView<?> parent, View view,
 	        	    int position, long id) {
+	        		loan = loanList.get(position);
 	        	    Toast.makeText(getApplicationContext(),
-	        	      "Click ListItem Number " + position, Toast.LENGTH_LONG)
+	        	      "Click ListItem Number " + loanList.get(position).getLoan_id(), Toast.LENGTH_LONG)
 	        	      .show();
 	        	  }
 			});

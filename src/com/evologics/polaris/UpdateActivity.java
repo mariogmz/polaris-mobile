@@ -36,7 +36,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NewLoanActivity extends Activity {
+public class UpdateActivity extends Activity {
 	
 	private EditText contact;
 	private Spinner category;
@@ -55,7 +55,7 @@ public class NewLoanActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_loan);
 		appLocationService = new AppLocationService(
-		        NewLoanActivity.this);
+		        UpdateActivity.this);
 		
 		contact = (EditText) findViewById(R.id.contactField);
 		category = (Spinner) findViewById(R.id.categorySpinner);

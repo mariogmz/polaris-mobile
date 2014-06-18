@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -29,5 +28,6 @@
         android:layout_below="@+id/loan_dates"
         android:text="This is a little field for notes and details"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+"
 
 </RelativeLayout>

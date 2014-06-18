@@ -60,10 +60,8 @@ public class PolarisUtil {
 	
 	public static JSONObject generateLogoutJSON(String email) {
 		JSONObject user_login = new JSONObject();
-		JSONObject credentials = new JSONObject();
 		try {
-			credentials.put("email", email);
-			user_login.put("user_login", credentials);
+			user_login.put("user_login", email);
 			Log.d("Logout JSON -> ", user_login.toString());
 			return user_login;
 		} catch (JSONException e) {
