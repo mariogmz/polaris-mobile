@@ -33,11 +33,12 @@
     </ListView>
 
     <Button
-        android:id="@+id/button_newLoan"
+        android:id="@+id/buttonNewLoan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="Nuevo" />
+        android:text="Nuevo"
+        android:onClick="doNew" />
 
 </RelativeLayout>

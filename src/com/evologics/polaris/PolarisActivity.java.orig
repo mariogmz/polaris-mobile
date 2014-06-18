@@ -1,15 +1,16 @@
 package com.evologics.polaris;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.Logger;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +56,11 @@ public class PolarisActivity extends Activity {
 		//Initializing array
 		loanList = new ArrayList<Loan>();
 		
+<<<<<<< HEAD
 		// Setting new loan action
+=======
+		/*Setting new loan action
+>>>>>>> origin/http-singleton
 		Button buttonNewLoan = (Button) findViewById(R.id.button_newLoan);
 		buttonNewLoan.setOnClickListener(new OnClickListener() {
 
@@ -83,15 +88,19 @@ public class PolarisActivity extends Activity {
 
 			}
 		});
+<<<<<<< HEAD
 		
+=======
+		*/
 	}
 	
 	public void doNew(View view){
 		Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
     	startActivity(intent);
+>>>>>>> origin/http-singleton
 	}
-	
-	public void logout(View view){
+
+	public void logout(View view) {
 		// TODO: Call logout activity to display the process.
 		// finish();
 		Intent intent = new Intent(getApplicationContext(),
