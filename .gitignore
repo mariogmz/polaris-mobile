@@ -27,4 +27,4 @@ proguard/
 
 
 .DS_Store
-*.DS_Store
+*.DS_Store\n
