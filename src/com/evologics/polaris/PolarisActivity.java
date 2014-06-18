@@ -74,7 +74,7 @@ public class PolarisActivity extends Activity {
 	}
 	
 	public void doNew(View view){
-		Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
+		Intent intent = new Intent(getApplicationContext(), NewLoanActivity.class);
     	startActivity(intent);
 	}
 	

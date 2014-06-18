@@ -35,7 +35,7 @@
     <string name="title_activity_logout">LogoutActivity</string>
     <string name="login_progress_signing_out">Cerrando Sesion&#8230;</string>
     <string name="title_activity_list">ListActivity</string>
-	
+
     <string-array name="categories_array">
         <item>Dinero</item>
         <item>Libro</item>
@@ -43,5 +43,8 @@
         <item>CD</item>
         <item>Otros</item>
     </string-array>
-    
+
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_new_loan">NewLoanActivity</string>
+
 </resources>
