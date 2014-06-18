@@ -5,40 +5,34 @@
     android:onClick="getJSON"
     tools:context="${packageName}.${activityClass}" >
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="logout"
-        android:text="Cerrar Sesión" />
+	    <ListView
+	        android:id="@+id/loanListView"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/logout"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="47dp">
 
-    <TextView
-        android:id="@+id/user_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/hello_world" />
+	    </ListView>
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/logout"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/user_status" >
+	    <Button
+	        android:id="@+id/buttonNewLoan"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:onClick="doNew"
+	        android:text="@string/action_new_loan" />
 
-    </ListView>
-
-    <Button
-        android:id="@+id/buttonNewLoan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="Nuevo"
-        android:onClick="doNew" />
+	    <Button
+	        android:id="@+id/logout"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+	        android:onClick="logout"
+	        android:text="@string/action_logout" />
 
 </RelativeLayout>

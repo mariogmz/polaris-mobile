@@ -1,18 +1,8 @@
 package com.evologics.polaris;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -20,69 +10,106 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.evologics.polaris.controller.UserStoreImpl;
 import com.evologics.polaris.model.Loan;
 import com.evologics.polaris.util.Communicator;
+import com.evologics.polaris.util.LoanAdapter;
+import com.evologics.polaris.util.SwipeDismissListViewTouchListener;
 
 public class PolarisActivity extends Activity {
-
-	private TextView userStatus;
+	
+	private ListView loanView;
 	private ArrayList<Loan> loanList;
+	LoanAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_polaris);
 		
+		//Initializing objects
 		initializeObjects();
-
 		
 	}
 
 	private void initializeObjects() {
-		/*
-		userStatus = (TextView) findViewById(R.id.user_status);
-		userStatus.setText("User email: "
-				+ UserStoreImpl.getInstance().getUserEmail()
-				+ ", User authToken: "
-				+ UserStoreImpl.getInstance().getUserAuthToken());
-		 */
-		
+
 		//Initializing array
 		loanList = new ArrayList<Loan>();
 		
-		// Setting new loan action
-		Button buttonNewLoan = (Button) findViewById(R.id.button_newLoan);
-		buttonNewLoan.setOnClickListener(new OnClickListener() {
-
+		
+		//Get JSON and populate the viewList
+		Thread thread = new Thread(new Runnable() {
 			@Override
-			public void onClick(View v) {
-				Thread thread = new Thread(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							try {
-								getJSON("https://polaris-app.herokuapp.com/api/reminders");
-								//String responseText = getResponseText("https://polaris-app.herokuapp.com/api/reminders?auth_token="+UserStoreImpl.getInstance().getUserAuthToken().toString());
-								//JSONObject mainResponseObject = new JSONObject(responseText);
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								Log.e("ERROR", e.getMessage());
-							}
-						} catch (Exception e) {
-							Log.e("ERROR", e.getMessage());
-							e.printStackTrace();
-						}
+			public void run() {
+				try {
+					try {
+						getJSON("https://polaris-app.herokuapp.com/api/reminders");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						Log.e("ERROR", e.getMessage());
 					}
-				});
-				thread.start();
-
+				} catch (Exception e) {
+					Log.e("ERROR", e.getMessage());
+					e.printStackTrace();
+				}
 			}
 		});
+		thread.start();
+		try {
+			thread.join(2000);
+			   
+	     	// 1. pass context and data to the custom adapter
+			adapter = new LoanAdapter(this, loanList);
+	 
+	        // 2. Get ListView from activity_main.xml
+	        ListView listView = (ListView) findViewById(R.id.loanListView);
+	 
+	        // 3. setListAdapter
+	        listView.setAdapter(adapter);
+	        
+	        //Adding onClickListener to listView
+	        listView.setOnItemClickListener(new OnItemClickListener() {
+	        	@Override
+	        	  public void onItemClick(AdapterView<?> parent, View view,
+	        	    int position, long id) {
+	        	    Toast.makeText(getApplicationContext(),
+	        	      "Click ListItem Number " + position, Toast.LENGTH_LONG)
+	        	      .show();
+	        	  }
+			});
+	        
+	        SwipeDismissListViewTouchListener touchListener =
+	                new SwipeDismissListViewTouchListener(
+	                        listView,
+	                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+	                            @Override
+	                            public boolean canDismiss(int position) {
+	                                return true;
+	                            }
+
+	                            @Override
+	                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+	                                for (int position : reverseSortedPositions) {
+	                                    adapter.remove(adapter.getItem(position));
+	                                }
+	                                adapter.notifyDataSetChanged();
+	                            }
+	                        });
+	        listView.setOnTouchListener(touchListener);
+	        // Setting this scroll listener is required to ensure that during ListView scrolling,
+	        // we don't look for swipes.
+	        listView.setOnScrollListener(touchListener.makeScrollListener());
+		        
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 	
@@ -103,6 +130,8 @@ public class PolarisActivity extends Activity {
 		// startActivity(intent);
 		// finish();
 	}
+	
+	
 
 	private void getJSON(String url) {
 		String page;

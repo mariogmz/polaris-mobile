@@ -31,31 +31,33 @@ public final class R {
         public static final int TextView01=0x7f09000c;
         public static final int TextView02=0x7f09000e;
         public static final int TextView03=0x7f090010;
-        public static final int action_forgot_password=0x7f09001a;
-        public static final int action_settings=0x7f09001b;
+        public static final int action_forgot_password=0x7f09001c;
+        public static final int action_settings=0x7f09001d;
         public static final int btn_create_account=0x7f090008;
         public static final int btn_login=0x7f090009;
         public static final int button1=0x7f090014;
-        public static final int buttonNewLoan=0x7f090018;
+        public static final int buttonNewLoan=0x7f090017;
         public static final int categorySpinner=0x7f09000d;
         public static final int contactField=0x7f09000b;
         public static final int descriptionField=0x7f09000f;
         public static final int email=0x7f090003;
         public static final int endDate=0x7f090012;
-        public static final int listView1=0x7f090017;
+        public static final int loanListView=0x7f090015;
+        public static final int loan_dates=0x7f09001a;
+        public static final int loan_details=0x7f09001b;
+        public static final int loan_name=0x7f090019;
         public static final int login=0x7f090005;
         public static final int login_form=0x7f090002;
         public static final int login_status=0x7f090000;
         public static final int login_status_message=0x7f090001;
-        public static final int logout=0x7f090015;
+        public static final int logout=0x7f090016;
         public static final int logout_status=0x7f090007;
         public static final int password=0x7f090004;
-        public static final int password_re=0x7f090019;
+        public static final int password_re=0x7f090018;
         public static final int sign_in_button=0x7f090006;
         public static final int startDate=0x7f090011;
         public static final int textView1=0x7f09000a;
         public static final int textView3=0x7f090013;
-        public static final int user_status=0x7f090016;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
@@ -65,6 +67,7 @@ public final class R {
         public static final int activity_polaris=0x7f030004;
         public static final int activity_register=0x7f030005;
         public static final int fragment_newitem=0x7f030006;
+        public static final int row=0x7f030007;
     }
     public static final class menu {
         public static final int login=0x7f080000;
@@ -73,6 +76,10 @@ public final class R {
     }
     public static final class string {
         public static final int action_forgot_password=0x7f05000b;
+        public static final int action_logout=0x7f05001b;
+        /**  String related to Polaris Main (loan list) 
+         */
+        public static final int action_new_loan=0x7f05001a;
         public static final int action_settings=0x7f050004;
         public static final int action_sign_in_register=0x7f050009;
         public static final int action_sign_in_short=0x7f05000a;
