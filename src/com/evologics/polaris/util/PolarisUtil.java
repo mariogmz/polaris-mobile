@@ -13,6 +13,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
@@ -195,6 +196,28 @@ public class PolarisUtil {
 			//TODO: Implementation for a all the other request methods
 			case GET:
 			case PUT:
+				HttpPut putRequest = new HttpPut(url);
+				try {
+					putRequest.setEntity( new StringEntity( jsonObject.toString() ) );
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				putRequest.setHeader("Accept", "application/json");
+				putRequest.setHeader("Content-type", "application/json");
+							
+				try {
+					HttpResponse response = SessionStore.getInstance().getClient().execute(putRequest);
+					return getResponseBody(response);
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				break;
 			
 			case PATCH:
 				break;

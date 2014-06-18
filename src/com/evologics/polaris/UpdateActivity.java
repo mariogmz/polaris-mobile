@@ -53,22 +53,19 @@ public class UpdateActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_new_loan);
+		setContentView(R.layout.activity_update);
 		appLocationService = new AppLocationService(
 		        UpdateActivity.this);
 		
-		contact = (EditText) findViewById(R.id.contactField);
-		category = (Spinner) findViewById(R.id.categorySpinner);
-		description = (EditText) findViewById(R.id.descriptionField);
-		startDate = (TextView) findViewById(R.id.startDate);
-		endDate = (TextView) findViewById(R.id.endDate);
-		locationShare = (CheckBox) findViewById(R.id.locationShare);
+		contact = (EditText) findViewById(R.id.contactFieldU);
+		category = (Spinner) findViewById(R.id.categorySpinnerU);
+		description = (EditText) findViewById(R.id.descriptionFieldU);
+		startDate = (TextView) findViewById(R.id.startDateU);
+		endDate = (TextView) findViewById(R.id.endDateU);
+		locationShare = (CheckBox) findViewById(R.id.locationShareU);
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		Calendar cal = Calendar.getInstance();
-		if(startDate != null){
-			startDate.setText(dateFormat.format(cal.getTime()));
-		}
+		DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+		DateFormat finalDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 		        R.array.categories_array, android.R.layout.simple_spinner_item);
@@ -76,6 +73,45 @@ public class UpdateActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		category.setAdapter(adapter);
+		
+		
+		//Poopulating
+		contact.setText( PolarisActivity.loan.getLoanOwner() );
+		String c = PolarisActivity.loan.getObjectName();
+
+		if(c.equals("Dinero")){
+			category.setSelection(0);
+		}
+		if(c.equals("Libro")){
+			category.setSelection(1);
+		}
+		if(c.equals("Pelicula")){
+			category.setSelection(2);
+		}
+		if(c.equals("CD")){
+			category.setSelection(3);
+		}
+		if(c.equals("Otros")){
+			category.setSelection(4);
+		}
+		
+		description.setText(PolarisActivity.loan.getNote());
+		
+		Date start_date;
+		try {
+			start_date = dateFormat.parse(PolarisActivity.loan.getDateStart().toString());
+			startDate.setText( finalDateFormat.format(start_date) );
+			if( PolarisActivity.loan.getDateEnd() != null ){
+				start_date = dateFormat.parse(PolarisActivity.loan.getDateEnd().toString());
+				endDate.setText(finalDateFormat.format(start_date));
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 	}
 	
@@ -132,8 +168,8 @@ public class UpdateActivity extends Activity {
 				JSONObject addReminderJSON = PolarisUtil.generateAddReminderJSON(fecha_prestamo, fecha_entrega, 
 						contacto, concepto, detalle, regresado, latitude, longitude );
 				
-				String remindersModuleUrl = "https://polaris-app.herokuapp.com/api/reminders";
-				String responseBody = PolarisUtil.serverRequest(addReminderJSON, RequestMethod.POST, remindersModuleUrl);
+				String remindersModuleUrl = "https://polaris-app.herokuapp.com/api/reminders/"+PolarisActivity.loan.getLoan_id();
+				String responseBody = PolarisUtil.serverRequest(addReminderJSON, RequestMethod.PUT, remindersModuleUrl);
 				
 				Log.d("Response body ->", responseBody);
 				

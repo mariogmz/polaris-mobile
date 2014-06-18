@@ -16,7 +16,7 @@
         android:text="¿A quien se lo prestaste?" />
 
     <EditText
-        android:id="@+id/contactField"
+        android:id="@+id/contactFieldU"
         android:layout_width="279dp"
         android:layout_height="wrap_content"
         android:ems="10" >
@@ -29,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/contactField"
+        android:layout_below="@+id/contactFieldU"
         android:text="¿Que le prestaste?" />
 
     <Spinner
-        android:id="@+id/categorySpinner"
+        android:id="@+id/categorySpinnerU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -48,11 +48,11 @@
         android:text="Describe lo que prestaste " />
 
     <EditText
-        android:id="@+id/descriptionField"
+        android:id="@+id/descriptionFieldU"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/categorySpinner"
+        android:layout_alignRight="@+id/categorySpinnerU"
         android:layout_below="@+id/TextView02"
         android:ems="10"
         android:hint="Opcional"
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/descriptionField"
+        android:layout_below="@+id/descriptionFieldU"
         android:text="Periodo del préstamo" />
 
     <RelativeLayout
@@ -74,7 +74,7 @@
         android:layout_weight="0.01">
 
         <TextView
-            android:id="@+id/endDate"
+            android:id="@+id/endDateU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -87,17 +87,17 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/startDate"
-            android:layout_alignBottom="@+id/startDate"
+            android:layout_alignBaseline="@+id/startDateU"
+            android:layout_alignBottom="@+id/startDateU"
             android:layout_centerHorizontal="true"
             android:text="al" />
 
         <TextView
-            android:id="@+id/startDate"
+            android:id="@+id/startDateU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/endDate"
-            android:layout_alignBottom="@+id/endDate"
+            android:layout_alignBaseline="@+id/endDateU"
+            android:layout_alignBottom="@+id/endDateU"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="28dp"
             android:onClick="showDatePickerDialog"
@@ -108,8 +108,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/endDate"
-            android:layout_below="@+id/endDate"
+            android:layout_alignRight="@+id/endDateU"
+            android:layout_below="@+id/endDateU"
             android:text="Elegir" 
             android:onClick="setEndDate"/>
 
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/button3"
             android:layout_alignBottom="@+id/button3"
-            android:layout_alignRight="@+id/startDate"
+            android:layout_alignRight="@+id/startDateU"
             android:text="Elegir"
             android:onClick="setStartDate" />
 
@@ -131,15 +131,15 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:onClick="onLoanSave"
-            android:text="Guardar" />
+            android:text="Actualizar" />
 
         <CheckBox
-            android:id="@+id/locationShare"
+            android:id="@+id/locationShareU"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/button1"
             android:layout_centerHorizontal="true"
-            android:text="Comparir Ubicación" />
+            android:text="Compartir Ubicación" />
 
     </RelativeLayout>
 

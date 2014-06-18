@@ -81,9 +81,13 @@ public class PolarisActivity extends Activity {
 	        	  public void onItemClick(AdapterView<?> parent, View view,
 	        	    int position, long id) {
 	        		loan = loanList.get(position);
+	        		Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
+	            	startActivity(intent);
+	            	/*
 	        	    Toast.makeText(getApplicationContext(),
 	        	      "Click ListItem Number " + loanList.get(position).getLoan_id(), Toast.LENGTH_LONG)
 	        	      .show();
+	        	      */
 	        	  }
 			});
 	        

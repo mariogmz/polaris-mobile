@@ -3,6 +3,7 @@ package com.evologics.polaris.util;
 import java.util.Calendar;
 
 import com.evologics.polaris.NewLoanActivity;
+import com.evologics.polaris.UpdateActivity;
 import com.evologics.polaris.util.PolarisUtil.DateType;
 
 import android.app.Dialog;
@@ -33,9 +34,18 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 	public void onDateSet(DatePicker view, int year, int monthOfYear,
 			int dayOfMonth) {
 		if( type == DateType.STARTDATE )
-			NewLoanActivity.startDate.setText( dayOfMonth + "-" + (monthOfYear+1) + "-" + year );
-		else
-			NewLoanActivity.endDate.setText( dayOfMonth + "-" + (monthOfYear+1) + "-" + year );
+			try{
+				NewLoanActivity.startDate.setText( dayOfMonth + "-" + (monthOfYear+1) + "-" + year );
+			}catch(Exception e){
+				UpdateActivity.startDate.setText( dayOfMonth + "-" + (monthOfYear+1) + "-" + year );
+			}
+		else{
+			try{
+				NewLoanActivity.endDate.setText( dayOfMonth + "-" + (monthOfYear+1) + "-" + year );
+			}catch(Exception e){
+				UpdateActivity.endDate.setText( dayOfMonth + "-" + (monthOfYear+1) + "-" + year );
+			}
+		}
 		
 	}
 

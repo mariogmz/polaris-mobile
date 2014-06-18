@@ -31,8 +31,8 @@ public final class R {
         public static final int TextView01=0x7f09000c;
         public static final int TextView02=0x7f09000e;
         public static final int TextView03=0x7f090010;
-        public static final int action_forgot_password=0x7f09001f;
-        public static final int action_settings=0x7f090020;
+        public static final int action_forgot_password=0x7f090025;
+        public static final int action_settings=0x7f090026;
         public static final int btn_create_account=0x7f090008;
         public static final int btn_login=0x7f090009;
         public static final int button1=0x7f090016;
@@ -40,15 +40,20 @@ public final class R {
         public static final int button3=0x7f090014;
         public static final int buttonNewLoan=0x7f09001a;
         public static final int categorySpinner=0x7f09000d;
+        public static final int categorySpinnerU=0x7f09001d;
         public static final int contactField=0x7f09000b;
+        public static final int contactFieldU=0x7f09001c;
         public static final int descriptionField=0x7f09000f;
+        public static final int descriptionFieldU=0x7f09001e;
         public static final int email=0x7f090003;
         public static final int endDate=0x7f090011;
+        public static final int endDateU=0x7f09001f;
         public static final int loanListView=0x7f090018;
-        public static final int loan_dates=0x7f09001d;
-        public static final int loan_details=0x7f09001e;
-        public static final int loan_name=0x7f09001c;
+        public static final int loan_dates=0x7f090023;
+        public static final int loan_details=0x7f090024;
+        public static final int loan_name=0x7f090022;
         public static final int locationShare=0x7f090017;
+        public static final int locationShareU=0x7f090021;
         public static final int login=0x7f090005;
         public static final int login_form=0x7f090002;
         public static final int login_status=0x7f090000;
@@ -59,6 +64,7 @@ public final class R {
         public static final int password_re=0x7f09001b;
         public static final int sign_in_button=0x7f090006;
         public static final int startDate=0x7f090013;
+        public static final int startDateU=0x7f090020;
         public static final int textView1=0x7f09000a;
         public static final int textView3=0x7f090012;
     }
