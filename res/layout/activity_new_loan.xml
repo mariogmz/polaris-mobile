@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.evologics.polaris.NewitemActivity$PlaceholderFragment" >
+    tools:context="${packageName}.${activityClass}" >
 
     <TextView
         android:id="@+id/textView1"
@@ -57,7 +57,8 @@
         android:ems="10"
         android:hint="Opcional"
         android:inputType="textMultiLine"
-        android:lines="2" />
+        android:lines="2" 
+        />
 
     <TextView
         android:id="@+id/TextView03"
@@ -70,13 +71,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.05" >
-
-        <TextView
-            android:id="@+id/startDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dd-mm-yyyy" />
+        android:layout_weight="0.01">
 
         <TextView
             android:id="@+id/endDate"
@@ -84,24 +79,68 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="64dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="37dp"
             android:text="dd-mm-yyyy" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@+id/endDate"
+            android:layout_alignBaseline="@+id/startDate"
+            android:layout_alignBottom="@+id/startDate"
+            android:layout_centerHorizontal="true"
             android:text="al" />
-    </RelativeLayout>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:onClick="onLoanSave" />
+        <TextView
+            android:id="@+id/startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/endDate"
+            android:layout_alignBottom="@+id/endDate"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="28dp"
+            android:onClick="showDatePickerDialog"
+            android:text="dd-mm-yyyy" />
+
+        <Button
+            android:id="@+id/button3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/endDate"
+            android:layout_below="@+id/endDate"
+            android:text="Elegir" 
+            android:onClick="setEndDate"/>
+
+        <Button
+            android:id="@+id/button2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button3"
+            android:layout_alignBottom="@+id/button3"
+            android:layout_alignRight="@+id/startDate"
+            android:text="Elegir"
+            android:onClick="setStartDate" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="onLoanSave"
+            android:text="Guardar" />
+
+        <CheckBox
+            android:id="@+id/locationShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button1"
+            android:layout_centerHorizontal="true"
+            android:text="Comparir Ubicación" />
+
+    </RelativeLayout>
 
 </LinearLayout>

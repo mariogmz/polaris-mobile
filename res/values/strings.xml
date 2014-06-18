@@ -47,5 +47,8 @@
         <item>CD</item>
         <item>Otros</item>
     </string-array>
-    
+
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_new_loan">NewLoanActivity</string>
+
 </resources>

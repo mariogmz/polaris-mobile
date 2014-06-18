@@ -92,6 +92,29 @@ public class PolarisUtil {
 		return null;
 	}
 	
+	public static JSONObject generateAddReminderJSON(String startDate, String endDate, String contact, 
+			String concept, String desc, boolean status, double latitude, double longitude) {
+		JSONObject reminder = new JSONObject();
+		JSONObject recordatorio = new JSONObject();
+		try {
+			recordatorio.put("long", longitude);
+			recordatorio.put("lat", latitude);
+			recordatorio.put("regresado", status);
+			recordatorio.put("detalle", desc);
+			recordatorio.put("concepto", concept);
+			recordatorio.put("contacto", contact);
+			recordatorio.put("fecha_entrega", endDate);
+			recordatorio.put("fecha_prestamo", startDate);
+			reminder.put("recordatorio", recordatorio);
+			reminder.put("auth_token", UserStoreImpl.getInstance().getUserAuthToken());
+			Log.d("Login JSON -> ", reminder.toString());
+			return reminder;
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	/**
 	 * 
 	 * @param response is the response JSON, containing the attributes needed for validation
@@ -113,6 +136,8 @@ public class PolarisUtil {
 	public enum RequestMethod {
 		GET, POST, PUT, DELETE, PATCH;
 	}
+	
+	public enum DateType { STARTDATE, ENDDATE }
 	
 	public static String serverRequest(JSONObject jsonObject, RequestMethod method, String url ){
 		
