@@ -51,7 +51,7 @@ public class Loan {
 	public Loan(JSONObject json){
 		try {
 			//Object id
-			this.loan_id = json.getInt("user_id");
+			this.loan_id = json.getInt("id");
 			//ObjectName
 			this.objectName = json.optString("concepto");
 			//LoanOwner

@@ -3,6 +3,7 @@ package com.evologics.polaris;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -15,9 +16,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.evologics.polaris.controller.UserStore;
+import com.evologics.polaris.controller.UserStoreImpl;
 import com.evologics.polaris.model.Loan;
 import com.evologics.polaris.util.Communicator;
 import com.evologics.polaris.util.LoanAdapter;
+import com.evologics.polaris.util.PolarisUtil;
 import com.evologics.polaris.util.SwipeDismissListViewTouchListener;
 
 public class PolarisActivity extends Activity {
@@ -94,10 +98,48 @@ public class PolarisActivity extends Activity {
 
 	                            @Override
 	                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-	                                for (int position : reverseSortedPositions) {
-	                                    adapter.remove(adapter.getItem(position));
-	                                }
-	                                adapter.notifyDataSetChanged();
+	                                    //Recovering the loan id to remove it from the database
+	                                    final int loanId = adapter.getItem(reverseSortedPositions[0]).getLoan_id();
+	                                    String name = adapter.getItem(reverseSortedPositions[0]).getObjectName();
+	                                    
+	                                    adapter.remove(adapter.getItem(reverseSortedPositions[0]));
+	                                    
+	                                    
+	                                    try {
+											
+											Thread thread = new Thread(new Runnable() {
+												
+												
+												@Override
+												public void run() {
+													try {
+														try {
+															//Here we make the DELETE request
+						                                    JSONObject json = new JSONObject();
+															json.put("auth_token",UserStoreImpl.getInstance().getUserAuthToken());
+															PolarisUtil.serverRequest(json,PolarisUtil.RequestMethod.DELETE,"https://polaris-app.herokuapp.com/api/reminders/" + loanId);
+														} catch (Exception e) {
+															// TODO Auto-generated catch block
+															Log.e("ERROR", e.getMessage());
+														}
+													} catch (Exception e) {
+														Log.e("ERROR", e.getMessage());
+														e.printStackTrace();
+													}
+												}
+											});
+											//Starting thread for delete
+											thread.start();
+											//Waiting for thread to finish
+											thread.join(2000);
+											
+										} catch (Exception e){
+											Log.d("ERROR","EX:" + e.getMessage());
+										}
+	                                    
+	                                    Toast.makeText(getBaseContext(),name + " ha sido removido!", Toast.LENGTH_SHORT).show();
+	                                    adapter.notifyDataSetChanged();
+	                                
 	                            }
 	                        });
 	        listView.setOnTouchListener(touchListener);
