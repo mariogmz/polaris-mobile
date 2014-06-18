@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import org.json.JSONArray;
@@ -55,39 +56,11 @@ public class PolarisActivity extends Activity {
 		//Initializing array
 		loanList = new ArrayList<Loan>();
 		
-		// Setting new loan action
-		Button buttonNewLoan = (Button) findViewById(R.id.button_newLoan);
-		buttonNewLoan.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Thread thread = new Thread(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							try {
-								getJSON("https://polaris-app.herokuapp.com/api/reminders");
-								//String responseText = getResponseText("https://polaris-app.herokuapp.com/api/reminders?auth_token="+UserStoreImpl.getInstance().getUserAuthToken().toString());
-								//JSONObject mainResponseObject = new JSONObject(responseText);
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								Log.e("ERROR", e.getMessage());
-							}
-						} catch (Exception e) {
-							Log.e("ERROR", e.getMessage());
-							e.printStackTrace();
-						}
-					}
-				});
-				thread.start();
-
-			}
-		});
 		
 	}
 	
 	public void doNew(View view){
-		Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
+		Intent intent = new Intent(getApplicationContext(), NewLoanActivity.class);
     	startActivity(intent);
 	}
 	
