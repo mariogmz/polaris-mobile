@@ -43,7 +43,7 @@ public class PolarisActivity extends Activity {
 		userStatus.setText( "User email: " + UserStoreImpl.getInstance().getUserEmail() 
 				+ ", User authToken: " + UserStoreImpl.getInstance().getUserAuthToken() );
 		
-		//Setting new loan action
+		/*Setting new loan action
 		Button buttonNewLoan = (Button) findViewById(R.id.button_newLoan);
 		buttonNewLoan.setOnClickListener(new OnClickListener() {
 			
@@ -70,6 +70,12 @@ public class PolarisActivity extends Activity {
 				
 			}
 		});
+		*/
+	}
+	
+	public void doNew(View view){
+		Intent intent = new Intent(getApplicationContext(), NewitemActivity.class);
+    	startActivity(intent);
 	}
 	
 	public void logout(View view){

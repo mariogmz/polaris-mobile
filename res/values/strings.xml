@@ -35,5 +35,13 @@
     <string name="title_activity_logout">LogoutActivity</string>
     <string name="login_progress_signing_out">Cerrando Sesion&#8230;</string>
     <string name="title_activity_list">ListActivity</string>
-
+	
+    <string-array name="categories_array">
+        <item>Dinero</item>
+        <item>Libro</item>
+        <item>Pelicula</item>
+        <item>CD</item>
+        <item>Otros</item>
+    </string-array>
+    
 </resources>

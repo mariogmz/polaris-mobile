@@ -1,5 +1,9 @@
 package com.evologics.polaris;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -9,19 +13,60 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.os.Build;
 
 public class NewitemActivity extends Activity {
+	
+	private EditText contact;
+	private Spinner category;
+	private EditText description;
+	private TextView startDate;
+	private TextView endDate;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_newitem);
 
+		/*
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		*/
+		
+		
+		
+		contact = (EditText) findViewById(R.id.contactField);
+		category = (Spinner) findViewById(R.id.categorySpinner);
+		description = (EditText) findViewById(R.id.descriptionField);
+		startDate = (TextView) findViewById(R.id.startDate);
+		endDate = (TextView) findViewById(R.id.endDate);
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		Calendar cal = Calendar.getInstance();
+		//startDate.setText(dateFormat.format(cal.getTime().toString()));
+		//startDate.setText("Pucha");
+		if(startDate != null){
+			startDate.setText(dateFormat.format(cal.getTime()));
+		}
+		
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories_array, R.id.categorySpinner);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(R.id.categorySpinner);
+		// Apply the adapter to the spinner
+		category.setAdapter(adapter);
+		
+	}
+	
+	
+	public void onLoanSave(View view){
+		
 	}
 
 	@Override

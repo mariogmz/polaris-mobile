@@ -55,6 +55,10 @@
             android:name="com.evologics.polaris.ListActivity"
             android:label="@string/title_activity_list" >
         </activity>
+        <activity
+            android:name="com.evologics.polaris.NewitemActivity"
+            android:label="@string/title_activity_list" >
+        </activity>
     </application>
 
 </manifest>
