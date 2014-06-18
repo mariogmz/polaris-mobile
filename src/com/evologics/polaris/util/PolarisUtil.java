@@ -167,8 +167,18 @@ public class PolarisUtil {
 				break;
 				//End case POST
 			case DELETE:
-				url += "?" + "user_login=" + UserStoreImpl.getInstance().getUserEmail();
-				HttpDelete deleteRequest = new HttpDelete(url);
+				HttpDeleteWithBody deleteRequest = new HttpDeleteWithBody(url);
+
+				StringEntity se;
+				try {
+					se = new StringEntity(jsonObject.toString(),HTTP.UTF_8);
+					se.setContentType("application/json");
+					deleteRequest.setEntity(se);
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				
 				deleteRequest.setHeader("Content-type", "application/json");
 							

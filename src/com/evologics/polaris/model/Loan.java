@@ -10,7 +10,8 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class Loan {
-
+	
+	private int loan_id;
 	private String objectName;
 	private String loanOwner;
 	private Date dateStart;
@@ -31,7 +32,7 @@ public class Loan {
 	 * @param category
 	 * @param currentState
 	 */
-	public Loan(String objectName, String loanOwner, Date dateStart,
+	public Loan(int loan_id, String objectName, String loanOwner, Date dateStart,
 			Date dateEnd, String note, String category, Loan_State currentState) {
 		this.objectName = objectName;
 		this.loanOwner = loanOwner;
@@ -48,35 +49,49 @@ public class Loan {
 	 */
 	
 	public Loan(JSONObject json){
-		//ObjectName
-		this.objectName = json.optString("concepto");
-		//LoanOwner
-		this.loanOwner = json.optString("contacto");
-		//Dates parsing
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
+			//Object id
+			this.loan_id = json.getInt("id");
+			//ObjectName
+			this.objectName = json.optString("concepto");
+			//LoanOwner
+			this.loanOwner = json.optString("contacto");
+			//Dates parsing
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
 			//Date Start
 			this.dateStart = sdf.parse(json.optString("fecha_prestamo"));
 			//Date End
 			this.dateEnd = sdf.parse(json.optString("fecha_entrega"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			Log.d("ERROR",e.getMessage());
-			e.printStackTrace();
+	
+			//Detail
+			this.note = json.optString("detalle");
+			//Category
+			this.category = "";
+			
+			boolean regresado = json.isNull("regresado") ? false : true;
+			if(regresado){
+				this.currentState = Loan_State.Refunded;
+			}else{
+				this.currentState = new Date().after(dateEnd)? Loan_State.Expired : Loan_State.On_Time;
+			}
+		}catch(JSONException ex){
+			Log.d("ERROR","JSON:" + ex.getMessage());
+			ex.printStackTrace();
+		}catch(ParseException ex){
+			Log.d("ERROR","PARSING:" + ex.getMessage());
+			ex.printStackTrace();
 		}
-		//Detail
-		this.note = json.optString("detalle");
-		//Category
-		this.category = "";
-		
-		boolean regresado = json.isNull("regresado") ? false : true;
-		if(regresado){
-			this.currentState = Loan_State.Refunded;
-		}else{
-			this.currentState = new Date().after(dateEnd)? Loan_State.Expired : Loan_State.On_Time;
-		}
 		
 		
+	}
+
+	public int getLoan_id() {
+		return loan_id;
+	}
+
+	public void setLoan_id(int loan_id) {
+		this.loan_id = loan_id;
 	}
 
 	public String getObjectName() {
