@@ -60,9 +60,9 @@ public class Loan {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			
 			//Date Start
-			this.dateStart = sdf.parse(json.optString("fecha_prestamo"));
+			this.dateStart = !json.isNull("fecha_prestamo")? sdf.parse(json.optString("fecha_prestamo")) : new Date();
 			//Date End
-			this.dateEnd = sdf.parse(json.optString("fecha_entrega"));
+			this.dateEnd = !json.isNull("fecha_entrega") ? sdf.parse(json.optString("fecha_entrega")) : null;
 	
 			//Detail
 			this.note = json.optString("detalle");

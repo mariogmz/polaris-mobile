@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.Toast;
 
 import com.evologics.polaris.controller.UserStore;
 import com.evologics.polaris.controller.UserStoreImpl;
+import com.evologics.polaris.util.ConnectionDetector;
 
 public class MainActivity extends Activity {
 
@@ -28,14 +28,24 @@ public class MainActivity extends Activity {
     }
     
     public void doCreateAccount(View view){
-    	Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-    	startActivity(intent);
-    	finish();
+    	ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+    	if (cd.isConnectingToInternet()){
+	    	Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+	    	startActivity(intent);
+	    	finish();
+    	}else{
+    		Toast.makeText(getApplicationContext(),"Verifique su conexión a internet e intente de nuevo.",Toast.LENGTH_LONG).show();
+    	}
     }
     
     public void doLogin(View view){
-    	Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-    	startActivity(intent);
-    	finish();
+    	ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+    	if (cd.isConnectingToInternet()){
+	    	Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+	    	startActivity(intent);
+	    	finish();
+    	}else{
+    		Toast.makeText(getApplicationContext(),"Verifique su conexión a internet e intente de nuevo.",Toast.LENGTH_LONG).show();
+    	}
     }
 }

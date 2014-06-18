@@ -12,22 +12,20 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
+
+import com.evologics.polaris.R;
 import com.evologics.polaris.controller.SessionStore;
 import com.evologics.polaris.controller.UserStoreImpl;
-
-import android.util.Log;
 
 /**
  * PolarisUtil contains all the helper methods used in the application.
@@ -291,5 +289,34 @@ public class PolarisUtil {
 		return charset;
 	}
 	//End of response translation functions
+	
+	/**
+     * Function to display simple Alert Dialog
+     * @param context - application context
+     * @param title - alert dialog title
+     * @param message - alert message
+     * @param status - success/failure (used to set icon)
+     * */
+    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+ 
+        // Setting Dialog Title
+        alertDialog.setTitle(title);
+ 
+        // Setting Dialog Message
+        alertDialog.setMessage(message);
+         
+        // Setting alert dialog icon
+        //alertDialog.setIcon((status) ? android.R.drawable.success : R.drawable.fail);
+ 
+        // Setting OK Button
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+ 
+        // Showing Alert Message
+        alertDialog.show();
+    }
 	
 }

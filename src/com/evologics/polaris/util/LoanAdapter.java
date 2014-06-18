@@ -51,8 +51,10 @@ public class LoanAdapter extends ArrayAdapter<Loan>{
 	        		LoansArrayList.get(position).getLoanOwner());
 	        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy");
 	        
+	        String date_end = LoansArrayList.get(position).getDateEnd() == null ? "Sin fecha" : sdf.format(LoansArrayList.get(position).getDateEnd());
+	        
 	        loan_dates_text.setText(sdf.format(LoansArrayList.get(position).getDateStart()) 
-	        		+ " ::: " + sdf.format(LoansArrayList.get(position).getDateEnd()));
+	        		+ " ::: " + date_end);
 	        
 	        loan_details_text.setText(LoansArrayList.get(position).getNote());
 	        
