@@ -176,19 +176,19 @@ public class UpdateActivity extends Activity {
 				if (!responseBody.equals(null)){
 					try {
 						JSONObject response = new JSONObject(responseBody);
-						String success = response.getString("user_id");
+						boolean success = response.getBoolean("success");
 						
-						if(!success.isEmpty()){
+						if(success){
 							runOnUiThread(new Runnable(){
 								public void run(){
-									Toast.makeText(getApplicationContext(), "Registro Exitoso!", Toast.LENGTH_LONG).show();
+									Toast.makeText(getApplicationContext(), "Modificado Exitosamente!", Toast.LENGTH_LONG).show();
 									finish();
 								}
 							});
 						}else{
 							runOnUiThread(new Runnable(){
 								public void run(){
-									Toast.makeText(getApplicationContext(), "El registro falló!", Toast.LENGTH_LONG).show();
+									Toast.makeText(getApplicationContext(), "La modificacion falló!", Toast.LENGTH_LONG).show();
 								}
 							});
 						}

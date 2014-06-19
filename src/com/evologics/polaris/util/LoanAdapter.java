@@ -46,7 +46,7 @@ public class LoanAdapter extends ArrayAdapter<Loan>{
 	        TextView loan_details_text = (TextView) rowView.findViewById(R.id.loan_details);
 
 	        // 4. Set the text for textView
-	        loan_name_text.setText(LoansArrayList.get(position).getLoan_id() + ". " + LoansArrayList.get(position).getObjectName() + 
+	        loan_name_text.setText(LoansArrayList.get(position).getObjectName() + 
 	        		" -> " + 
 	        		LoansArrayList.get(position).getLoanOwner());
 	        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy");
