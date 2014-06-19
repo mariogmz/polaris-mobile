@@ -5,24 +5,34 @@
     tools:context="${packageName}.${activityClass}" >
 
     <Button
-        android:id="@+id/btn_create_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="108dp"
-        android:layout_marginLeft="49dp"
-        android:text="@string/create_account_text"
-        android:onClick="doCreateAccount" />
-
-    <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btn_create_account"
-        android:layout_alignBottom="@+id/btn_create_account"
-        android:layout_toRightOf="@+id/btn_create_account"
-        android:text="@string/login_text"
-        android:onClick="doLogin" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginRight="15dp"
+        android:onClick="doLogin"
+        android:text="@string/login_text" />
+
+    <Button
+        android:id="@+id/btn_create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_login"
+        android:layout_alignBottom="@+id/btn_login"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="22dp"
+        android:onClick="doCreateAccount"
+        android:text="@string/create_account_text" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_create_account"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/polaris_icon" />
 
 </RelativeLayout>

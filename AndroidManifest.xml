@@ -16,7 +16,8 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.Holo"
+        android:icon="@drawable/ic_launcher" >
         <service android:name=".AppLocationService" />
         <activity
             android:name="com.evologics.polaris.MainActivity"
@@ -29,7 +30,7 @@
         </activity>
         <activity
             android:name="com.evologics.polaris.LoginActivity"
-            android:label="@string/title_activity_login"
+            android:label="Evologics: Polaris"
             android:parentActivityName="com.evologics.polaris.MainActivity"
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <meta-data
@@ -38,7 +39,7 @@
         </activity>
         <activity
             android:name="com.evologics.polaris.RegisterActivity"
-            android:label="@string/title_activity_register"
+            android:label="Registrar nuevo usuario"
             android:parentActivityName="com.evologics.polaris.MainActivity"
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <meta-data
@@ -47,11 +48,11 @@
         </activity>
         <activity
             android:name="com.evologics.polaris.PolarisActivity"
-            android:label="@string/title_activity_polaris" >
+            android:label="Préstamos!" >
         </activity>
         <activity
             android:name="com.evologics.polaris.LogoutActivity"
-            android:label="@string/title_activity_logout" >
+            android:label="Cerrando sesión" >
         </activity>
         <activity
             android:name="com.evologics.polaris.ListActivity"
@@ -59,11 +60,11 @@
         </activity>
         <activity
             android:name="com.evologics.polaris.NewLoanActivity"
-            android:label="@string/title_activity_new_loan" >
+            android:label="Nuevo préstamo" >
         </activity>
         <activity
             android:name="com.evologics.polaris.UpdateActivity"
-            android:label="@string/title_activity_new_loan" >
+            android:label="Detalles" >
         </activity>
     </application>
 
